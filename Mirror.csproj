@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{543115D1-64B5-43EA-465E-60F3E8DE6DDD}</ProjectGuid>
+    <ProjectGuid>{371AC097-6FF0-4217-6234-D245821CDD15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Mirror</AssemblyName>
@@ -125,10 +125,10 @@
     <Compile Include="Assets\Mirror\Runtime\UNetwork.cs" />
     <None Include="Assets\Mirror\Runtime\Mirror.asmdef" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2019.3.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -326,16 +326,16 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2019.3.3f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -691,11 +691,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{686E3921-0145-807E-2AE4-DB07662399DD}</Project>
+      <Project>{114F1800-0C80-213B-AF95-E34AA6C8C23E}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Ninja.WebSockets.csproj">
-      <Project>{2532264D-6A95-C9E2-26CE-3EFFA59A62A2}</Project>
+      <Project>{0E5AE846-11C4-82B3-8FDC-265130604C5A}</Project>
       <Name>Ninja.WebSockets</Name>
     </ProjectReference>
   </ItemGroup>

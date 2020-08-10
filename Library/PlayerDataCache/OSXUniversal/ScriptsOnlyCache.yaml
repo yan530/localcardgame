@@ -1,21 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - JoinLobbyMenu
-    - MainMenu
-    - NetworkGamePlayerLobby
-    - NetworkManagerLobby
-    - NetworkRoomPlayerLobby
-    - PlayerNameInput
-    - PlayerSpawnPoint
-    - PlayerSpawnSystem
-    Mirror.Components.dll:
-    - Mirror.NetworkTransform
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
-    Mirror.dll:
-    - Mirror.NetworkIdentity
-    - Mirror.TelepathyTransport
+    - CultureShock
+    - DrapDrop
+    - ExchangeCard
+    - GameManager
+    - GetNames
+    - HUDManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -25,20 +16,29 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.Scrollbar
   sceneClasses:
-    Assets/Scenes/Scene_GameBoard_Table.unity:
+    Assets/Scenes/Scene_GameBoard.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -47,17 +47,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
     - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -66,18 +62,52 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11890}
+      Script: {instanceID: 11188}
     - Class: 114
-      Script: {instanceID: 13350}
+      Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 25638}
+      Script: {instanceID: 11456}
+    - Class: 114
+      Script: {instanceID: 11516}
+    - Class: 114
+      Script: {instanceID: 11900}
+    - Class: 114
+      Script: {instanceID: 12344}
+    - Class: 114
+      Script: {instanceID: 12434}
+    - Class: 114
+      Script: {instanceID: 12488}
+    - Class: 114
+      Script: {instanceID: 12614}
+    - Class: 114
+      Script: {instanceID: 12844}
+    - Class: 114
+      Script: {instanceID: 12918}
+    - Class: 114
+      Script: {instanceID: 13312}
+    - Class: 114
+      Script: {instanceID: 13368}
+    - Class: 114
+      Script: {instanceID: 13408}
+    - Class: 114
+      Script: {instanceID: 23972}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-    Assets/Scenes/Scene_Lobby.unity:
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Scene_Login.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -86,21 +116,21 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
     - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
-    - Class: 64
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -109,56 +139,44 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11184}
-    - Class: 114
       Script: {instanceID: 11188}
     - Class: 114
-      Script: {instanceID: 11444}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11470}
+      Script: {instanceID: 11482}
     - Class: 114
-      Script: {instanceID: 11672}
+      Script: {instanceID: 11684}
     - Class: 114
-      Script: {instanceID: 11890}
+      Script: {instanceID: 11900}
     - Class: 114
-      Script: {instanceID: 11920}
+      Script: {instanceID: 11928}
     - Class: 114
-      Script: {instanceID: 12332}
+      Script: {instanceID: 12278}
     - Class: 114
-      Script: {instanceID: 12596}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12612}
+      Script: {instanceID: 12434}
     - Class: 114
-      Script: {instanceID: 12828}
+      Script: {instanceID: 12598}
     - Class: 114
-      Script: {instanceID: 12902}
+      Script: {instanceID: 12614}
     - Class: 114
-      Script: {instanceID: 12954}
+      Script: {instanceID: 12630}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 12844}
     - Class: 114
-      Script: {instanceID: 13128}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 13350}
+      Script: {instanceID: 13114}
     - Class: 114
-      Script: {instanceID: 23812}
+      Script: {instanceID: 13312}
     - Class: 114
-      Script: {instanceID: 23970}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 23982}
-    - Class: 114
-      Script: {instanceID: 25632}
-    - Class: 114
-      Script: {instanceID: 25636}
-    - Class: 114
-      Script: {instanceID: 25640}
-    - Class: 114
-      Script: {instanceID: 25646}
+      Script: {instanceID: 13408}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
-      Script: {instanceID: 0}
-    - Class: 143
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -211,6 +229,24 @@ ScriptsOnlyBuild:
     className: NetworkManagerHUD
   - hash:
       serializedVersion: 2
+      Hash: 230e748d5736c2f2083501c701674364
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkGamePlayerLobby
+  - hash:
+      serializedVersion: 2
+      Hash: afa9c3bc617dd147abccc3df6d4bf2bd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkRoomPlayerLobby
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GrantAuthority
+  - hash:
+      serializedVersion: 2
       Hash: 192ca9716d03752ea1d90a78bc2daac9
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
@@ -229,6 +265,18 @@ ScriptsOnlyBuild:
     className: NetworkTransform
   - hash:
       serializedVersion: 2
+      Hash: 0f1630513cc66b78105bbe382d543f51
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoundSystem
+  - hash:
+      serializedVersion: 2
+      Hash: e621b84ef3a6e7293e5385170af0a7f0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Cards
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -245,6 +293,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Additive
     className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: de40642e50376aa824aac031d917bee8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CardZoom
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -499,6 +553,12 @@ ScriptsOnlyBuild:
     className: Tank
   - hash:
       serializedVersion: 2
+      Hash: 100ccb872f2d92098e3c9dbf4639c2aa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkManagerLobby
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -509,6 +569,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleAdditiveScenes
     className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: 51716b868d39669dbed9e565dde5a133
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JoinLobbyMenu
   - hash:
       serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
@@ -535,6 +601,18 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSpawnPoint
+  - hash:
+      serializedVersion: 2
+      Hash: 5b102e50d976750e0b07597000a3ee04
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerNameInput
+  - hash:
+      serializedVersion: 2
       Hash: e87f50864f8a979f1228e8c69bd62658
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Pong
@@ -545,6 +623,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: f5326366a8f8122b5034421fe465db92
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GetNames
   - hash:
       serializedVersion: 2
       Hash: 16a720ee1ef3f470f479041a1e75bdc1
@@ -601,6 +685,12 @@ ScriptsOnlyBuild:
     className: NetworkPingDisplay
   - hash:
       serializedVersion: 2
+      Hash: 353cc57cf618731bc251c22ccce29861
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DrapDrop
+  - hash:
+      serializedVersion: 2
       Hash: 56e228cbcee3ed2e779d55e241ac9a04
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Chat
@@ -619,6 +709,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 42096aecf73692911385a6d07661b465
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUDManager
+  - hash:
+      serializedVersion: 2
       Hash: 144f39e785cd2926af56aa422f7e8948
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
@@ -629,6 +725,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkRoomPlayer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Players
   - hash:
       serializedVersion: 2
       Hash: a6430125f9e3bd1689cbfbb118b1a0ea
@@ -647,6 +749,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 1f93166f86096d011122c11f98e587ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: dd1544de412f92b32f1c6671123b3745
@@ -749,6 +857,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 68e3b3743e25a780964e33aa595abec5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSpawnSystem
   - hash:
       serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
@@ -854,6 +968,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Elements
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayModeRunnerCallback
@@ -955,6 +1075,12 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ExchangeCard
+  - hash:
+      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -973,60 +1099,24 @@ ScriptsOnlyBuild:
     className: PlayerScore
   - hash:
       serializedVersion: 2
+      Hash: bdfa84ba76a76c1caa29069b5e535b2e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenu
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
+      Hash: 235a1e8275c5d1ab2a1c0f017d90e1b5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: NetworkGamePlayerLobby
-  - hash:
-      serializedVersion: 2
-      Hash: afa9c3bc617dd147abccc3df6d4bf2bd
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NetworkRoomPlayerLobby
-  - hash:
-      serializedVersion: 2
-      Hash: 68e3b3743e25a780964e33aa595abec5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerSpawnSystem
-  - hash:
-      serializedVersion: 2
-      Hash: 2de44ebdb13c3747a8928acc9e3e4e58
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NetworkManagerLobby
-  - hash:
-      serializedVersion: 2
-      Hash: 51716b868d39669dbed9e565dde5a133
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: JoinLobbyMenu
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerSpawnPoint
-  - hash:
-      serializedVersion: 2
-      Hash: 5b102e50d976750e0b07597000a3ee04
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerNameInput
-  - hash:
-      serializedVersion: 2
-      Hash: bdfa84ba76a76c1caa29069b5e535b2e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MainMenu
+    className: CultureShock
   platform: 2
   scenePathNames:
-  - Assets/Scenes/Scene_Lobby.unity
-  - Assets/Scenes/Scene_GameBoard_Table.unity
-  playerPath: /Users/anni/Desktop/Lobby/Lobby.app
+  - Assets/Scenes/Scene_Login.unity
+  - Assets/Scenes/Scene_GameBoard.unity
+  playerPath: /Users/anni/Desktop/localcardgame/localcardgame.app

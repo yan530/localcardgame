@@ -92,6 +92,10 @@ public class GameManager : MonoBehaviour
     //get a card data from the cards list
     public Cards DrawCardData()
     {
+        if (cards == null || cards.Count == 0)
+        {
+            return null;
+        }
         currentPlayer.DecreaseActions();
 
         //check if an card has been exchanged and moved to the top of the deck

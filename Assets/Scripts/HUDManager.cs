@@ -20,6 +20,12 @@ public class HUDManager : MonoBehaviour
     public GameObject island;
     public GameObject elements;
     public GameObject win;
+    public string[] sentence;
+    public TMP_Text textHeader;
+    public TMP_Text textInstruction;
+    public TMP_Text textInstruction2;
+    public TMP_Text textInstruction3;
+    public GameObject isLose;
 
     private int cultureCount;
 
@@ -29,6 +35,31 @@ public class HUDManager : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>();
         activeCards = new List<GameObject>();
         cultureCount = 0;
+        StartCoroutine(Type());
+    }
+
+    IEnumerator Type()
+    {
+        foreach (char letter in sentence[0].ToCharArray())
+        {
+            textHeader.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
+        foreach (char letter in sentence[1].ToCharArray())
+        {
+            textInstruction.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
+        foreach (char letter in sentence[2].ToCharArray())
+        {
+            textInstruction2.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
+        foreach (char letter in sentence[3].ToCharArray())
+        {
+            textInstruction3.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
     }
 
     private void Update()
@@ -42,8 +73,14 @@ public class HUDManager : MonoBehaviour
     public void DrawCard()
     {
         Cards drawCard = gameManager.DrawCardData();
-        AddCardDataToGameObject(drawCard);
-        CheckStatus();
+        if (drawCard == null)
+        {
+            isLose.SetActive(true);
+        } else
+        {
+            AddCardDataToGameObject(drawCard);
+            CheckStatus();
+        }
     }
 
     //add the given drawcard data to the gameobject card

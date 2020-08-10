@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{76699404-9DB6-3468-3D90-0402CF694E6C}</ProjectGuid>
+    <ProjectGuid>{E0404ABB-B95F-CC5E-2265-A594C4A8DC66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CardZoom.cs" />
     <Compile Include="Assets\Scripts\Cards.cs" />
+    <Compile Include="Assets\Scripts\CultureShock.cs" />
     <Compile Include="Assets\Scripts\DrapDrop.cs" />
     <Compile Include="Assets\Scripts\Elements.cs" />
     <Compile Include="Assets\Scripts\ExchangeCard.cs" />
@@ -112,31 +113,31 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2019.3.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -316,16 +317,16 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.3.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>/Users/anni/Desktop/Local Card Game/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>/Users/anni/Desktop/localcardgame/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2019.3.3f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -681,35 +682,35 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.Weaver.csproj">
-      <Project>{76C1C003-33B3-9E0B-DB29-B3C42B68F8F6}</Project>
+      <Project>{01058D02-B1DD-EFA0-0415-DDD0167C292E}</Project>
       <Name>Mirror.Weaver</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{75B236BB-104A-F481-7191-515798DD4B42}</Project>
+      <Project>{86E8AD2B-5BC7-10CB-0949-3F4D98A73B95}</Project>
       <Name>Mirror.Authenticators</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{82F06807-335F-DC0A-1281-F4272E1A4537}</Project>
+      <Project>{5908AE7B-EA10-246A-62FA-563489BE0D5E}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{E0FB72DC-A0F2-7B90-8976-0AC81A94E643}</Project>
+      <Project>{BB71E8D9-EC83-E806-4F58-44DF5B194C94}</Project>
       <Name>Mirror.Examples</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{686E3921-0145-807E-2AE4-DB07662399DD}</Project>
+      <Project>{114F1800-0C80-213B-AF95-E34AA6C8C23E}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Ninja.WebSockets.csproj">
-      <Project>{2532264D-6A95-C9E2-26CE-3EFFA59A62A2}</Project>
+      <Project>{0E5AE846-11C4-82B3-8FDC-265130604C5A}</Project>
       <Name>Ninja.WebSockets</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{543115D1-64B5-43EA-465E-60F3E8DE6DDD}</Project>
+      <Project>{371AC097-6FF0-4217-6234-D245821CDD15}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{C50990CB-CCD1-C132-6FF7-0793A8F93A75}</Project>
+      <Project>{62F37B1B-82B5-1730-5CB0-63B1988B86DD}</Project>
       <Name>Mirror.Editor</Name>
     </ProjectReference>
   </ItemGroup>
