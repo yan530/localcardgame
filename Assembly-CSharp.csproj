@@ -65,24 +65,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CardZoom.cs" />
     <Compile Include="Assets\Scripts\Cards.cs" />
-    <Compile Include="Assets\Scripts\CultureShock.cs" />
     <Compile Include="Assets\Scripts\DrapDrop.cs" />
     <Compile Include="Assets\Scripts\Elements.cs" />
     <Compile Include="Assets\Scripts\ExchangeCard.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GetNames.cs" />
     <Compile Include="Assets\Scripts\GrantAuthority.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
-    <Compile Include="Assets\Scripts\JoinLobbyMenu.cs" />
-    <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\NetworkGamePlayerLobby.cs" />
-    <Compile Include="Assets\Scripts\NetworkManagerLobby.cs" />
-    <Compile Include="Assets\Scripts\NetworkRoomPlayerLobby.cs" />
+    <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInput.cs" />
-    <Compile Include="Assets\Scripts\PlayerSpawnPoint.cs" />
-    <Compile Include="Assets\Scripts\PlayerSpawnSystem.cs" />
     <Compile Include="Assets\Scripts\Players.cs" />
-    <Compile Include="Assets\Scripts\RoundSystem.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />

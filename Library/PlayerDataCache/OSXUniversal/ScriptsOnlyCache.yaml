@@ -70,27 +70,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11516}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 11518}
     - Class: 114
-      Script: {instanceID: 12344}
+      Script: {instanceID: 11902}
     - Class: 114
-      Script: {instanceID: 12434}
+      Script: {instanceID: 12346}
     - Class: 114
-      Script: {instanceID: 12488}
+      Script: {instanceID: 12436}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12490}
     - Class: 114
-      Script: {instanceID: 12844}
+      Script: {instanceID: 12616}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12846}
     - Class: 114
-      Script: {instanceID: 13312}
+      Script: {instanceID: 12920}
     - Class: 114
-      Script: {instanceID: 13368}
+      Script: {instanceID: 13314}
     - Class: 114
-      Script: {instanceID: 13408}
+      Script: {instanceID: 13370}
     - Class: 114
-      Script: {instanceID: 23972}
+      Script: {instanceID: 13410}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -145,35 +145,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11482}
     - Class: 114
-      Script: {instanceID: 11684}
+      Script: {instanceID: 11686}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 11902}
     - Class: 114
-      Script: {instanceID: 11928}
+      Script: {instanceID: 11930}
     - Class: 114
-      Script: {instanceID: 12278}
+      Script: {instanceID: 12280}
     - Class: 114
-      Script: {instanceID: 12344}
+      Script: {instanceID: 12346}
     - Class: 114
-      Script: {instanceID: 12434}
+      Script: {instanceID: 12436}
     - Class: 114
-      Script: {instanceID: 12598}
+      Script: {instanceID: 12600}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12616}
     - Class: 114
-      Script: {instanceID: 12630}
+      Script: {instanceID: 12632}
     - Class: 114
-      Script: {instanceID: 12844}
+      Script: {instanceID: 12846}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12920}
     - Class: 114
-      Script: {instanceID: 13114}
+      Script: {instanceID: 13116}
     - Class: 114
-      Script: {instanceID: 13312}
+      Script: {instanceID: 13314}
     - Class: 114
-      Script: {instanceID: 13368}
+      Script: {instanceID: 13370}
     - Class: 114
-      Script: {instanceID: 13408}
+      Script: {instanceID: 13410}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -365,6 +365,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 235a1e8275c5d1ab2a1c0f017d90e1b5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CultureShock
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -1109,12 +1115,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 235a1e8275c5d1ab2a1c0f017d90e1b5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CultureShock
   platform: 2
   scenePathNames:
   - Assets/Scenes/Scene_Login.unity

@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: -746077062548836322}
   - component: {fileID: 7807074386113848473}
   - component: {fileID: -5171687582359689513}
+  - component: {fileID: 158290023588362912}
   m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
@@ -801,3 +802,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Exchange: {fileID: 1290473870454035583}
+--- !u!114 &158290023588362912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696898817059404379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0

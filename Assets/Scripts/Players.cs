@@ -8,12 +8,14 @@ public class Players : ScriptableObject
     private List<Cards> playerCards;
     private int actions;
     private bool endTurn;
+    private bool isReady;
 
     public void Init(string inputName)
     {
         playerName = inputName;
         playerCards = new List<Cards>();
         actions = 4;
+        isReady = false;
     }
 
     public static new Players CreateInstance(string inputName)
@@ -57,5 +59,20 @@ public class Players : ScriptableObject
     public int GetActions()
     {
         return actions;
+    }
+
+    public bool IsReady()
+    {
+        return isReady;
+    }
+
+    public void SetReady()
+    {
+        isReady = true;
+    }
+
+    public void NotReady()
+    {
+        isReady = false;
     }
 }
