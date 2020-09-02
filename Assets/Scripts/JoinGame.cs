@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Mirror;
+using UnityEngine.UI;
 
 public class JoinGame : NetworkBehaviour
 {
@@ -14,6 +15,7 @@ public class JoinGame : NetworkBehaviour
     {
         NetworkIdentity netID = NetworkClient.connection.identity;
         playerManager = netID.GetComponent<PlayerManager>();
+        //need to fix user login
         playerManager.loadScene(player.text);
     }
 

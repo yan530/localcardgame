@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2919076398307400442}
   - component: {fileID: 5513841634369834048}
   - component: {fileID: 7422878978140390124}
+  - component: {fileID: -7987675688179825676}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -62,3 +63,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  players: []
+  cards: []
+  elements: []
+  communications: []
+  currentPlayer: {fileID: 0}
+  question: 
+  isWin: 0
+  card: {fileID: 7696898817059404379, guid: 154e2cbedfc3c4faf9fc60265adc86a7, type: 3}
+  playerArea: {fileID: 0}
+  discardArea: {fileID: 0}
+  gameBoard: {fileID: 3553608619213530830, guid: 4ab0db484e6674b409c4de1b474503c1,
+    type: 3}
+  endTurn: {fileID: 0}
+  activeCards: []
+  feedBack: {fileID: 0}
+  win: {fileID: 0}
+  sentence: []
+  textHeader: {fileID: 0}
+  textInstruction: {fileID: 0}
+  textInstruction2: {fileID: 0}
+  textInstruction3: {fileID: 0}
+  count: 0
+  playerName: 
+--- !u!114 &-7987675688179825676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084423036022785702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01

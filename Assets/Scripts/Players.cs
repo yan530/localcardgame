@@ -6,7 +6,6 @@ public class Players : ScriptableObject
 {
     private string playerName;
     private List<Cards> playerCards;
-    private int actions;
     private bool endTurn;
     private bool isReady;
 
@@ -14,7 +13,6 @@ public class Players : ScriptableObject
     {
         playerName = inputName;
         playerCards = new List<Cards>();
-        actions = 4;
         isReady = false;
     }
 
@@ -44,21 +42,6 @@ public class Players : ScriptableObject
     public void RemovePlayerCards(Cards card)
     {
         playerCards.Remove(card);
-    }
-
-    public void DecreaseActions()
-    {
-        actions--;
-    }
-
-    public void ResetActions()
-    {
-        actions = 4;
-    }
-
-    public int GetActions()
-    {
-        return actions;
     }
 
     public bool IsReady()

@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
-        currentPlayer.DecreaseActions();
+        //currentPlayer.DecreaseActions();
 
         //check if an card has been exchanged and moved to the top of the deck
         Cards drawCard;
@@ -125,12 +125,12 @@ public class GameManager : MonoBehaviour
         {
             index = 0;
         }
-        currentPlayer.ResetActions();
+        //currentPlayer.ResetActions();
     }
 
     public void PlayCard(string cardID, string type)
     {
-        currentPlayer.DecreaseActions();
+        //currentPlayer.DecreaseActions();
         Cards card = FindCard(cardID);
         if (type == "Culture")
         {
