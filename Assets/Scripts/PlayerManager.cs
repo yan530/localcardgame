@@ -18,51 +18,39 @@ public class PlayerManager : NetworkBehaviour
     public bool isWin;
 
     //HUD
+    public GameObject lobby;
     public GameObject card;
     public GameObject playerArea;
     public GameObject discardArea;
     public GameObject gameBoard;
     public GameObject endTurn;
     public List<GameObject> activeCards;
-    public TMP_Text feedBack;
+    public GameObject feedback;
+    public GameObject feedback2;
+    public List<GameObject> feedbacks;
     public GameObject win;
     public GameObject elementsDisplay;
     public GameObject communicationDisplay;
+    public bool collectAElement;
+    public GameObject playerInfo;
+    public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
 
     //instruction
-    public string[] sentence;
-    public TMP_Text textHeader;
-    public TMP_Text textInstruction;
-    public TMP_Text textInstruction2;
-    public TMP_Text textInstruction3;
-
-
-    private int cultureCount;
+    //public string[] sentence;
+    //public TMP_Text textHeader;
+    //public TMP_Text textInstruction;
+    //public TMP_Text textInstruction2;
+    //public TMP_Text textInstruction3;
 
     //debug
     public int count;
     public string playerName;
+    private int playerNum;
 
-    public void loadScene(string playerName)
-    {
-        currentPlayer = Players.CreateInstance(playerName);
-        CmdAddPlayer(playerName);
-        gameBoard.SetActive(true);
-
-        //hud
-        playerArea = GameObject.Find("Panel_player1");
-        discardArea = GameObject.Find("Panel_discard");
-        endTurn = GameObject.Find("Panel_endTurn");
-
-        activeCards = new List<GameObject>();
-        cultureCount = 0;
-    }
-
-    [Command]
-    void CmdAddPlayer(string playerName)
-    {
-        players.Add(currentPlayer);
-    }
+    public static event Action onClientConnected;
+    public static event Action onClientDisconnected;
 
     [Server]
     public override void OnStartServer()
@@ -77,6 +65,108 @@ public class PlayerManager : NetworkBehaviour
         LoadCards();
         //PlayRounds();
 
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        collectAElement = true;
+        //var spawnablePrefab = Resources.LoadAll<GameObject>("SpawnablePrefabs");
+        //foreach (var prefab in spawnablePrefab)
+        //{
+        //    ClientScene.RegisterPrefab(prefab);
+        //}
+    }
+
+    public void LoadLobby(string playerName)
+    {
+        //generate the gameboard from prefab
+        GameObject newLobby = Instantiate(lobby, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(newLobby, connectionToClient);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            newLobby.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        }
+        currentPlayer = Players.CreateInstance(playerName);
+        playerNum = players.Count;
+        CmdAddPlayer();
+    }
+
+    public void LoadScene()
+    {
+        //generate the gameboard from prefab
+        GameObject newGameBoard = Instantiate(gameBoard, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(newGameBoard, connectionToClient);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            newGameBoard.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        }
+
+        //get each player area set up
+        int index = 0;
+        while (index < players.Count)
+        {
+            if (playerNum >= players.Count)
+            {
+                playerNum = 0;
+            }
+            DisplayPlayer(index, players[playerNum].GetPlayerName());
+            index++;
+            playerNum++;
+        }
+
+        //hud
+        playerArea = GameObject.Find("Panel_player1");
+        discardArea = GameObject.Find("Panel_discard");
+
+        activeCards = new List<GameObject>();
+    }
+
+    //display player
+    private void DisplayPlayer(int i, string name)
+    {
+        GameObject player;
+        if (i == 0)
+        {
+            player = Instantiate(playerInfo, new Vector3(0, 0, 0), Quaternion.identity);
+
+        } else if (i == 1)
+        {
+            player = Instantiate(player2, new Vector3(0, 0, 0), Quaternion.identity);
+
+        } else if (i == 2)
+        {
+            player = Instantiate(player3, new Vector3(0, 0, 0), Quaternion.identity);
+
+        } else
+        {
+            player = Instantiate(player4, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        NetworkServer.Spawn(player, connectionToClient);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            player.transform.SetParent(GameObject.Find("GameBoard").transform, false);
+            player.transform.GetChild(1).GetComponent<TMP_Text>().text = name;
+        }
+    }
+
+    [Command]
+    void CmdAddPlayer()
+    {
+        players.Add(currentPlayer);
+        RpcUpdateLobby();
+    }
+
+    [ClientRpc]
+    void RpcUpdateLobby()
+    {
+        
     }
 
     //load data from csv file
@@ -126,16 +216,74 @@ public class PlayerManager : NetworkBehaviour
         Invoke(name, 0.3f);
     }
 
+    //create a panel over the player's play area when it's not the player's turn
+    private void EndTurn()
+    {
+        GameObject createEndTurn = Instantiate(endTurn, new Vector3(0, 0, 0), Quaternion.identity);
+        feedbacks.Add(createEndTurn);
+        NetworkServer.Spawn(createEndTurn, connectionToClient);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            createEndTurn.transform.SetParent(GameObject.Find("GameBoard").transform, false);
+        }
+    }
+
+    //check if the player is the currentplayer and if the game is won
     [ClientRpc]
     void RpcCheckTurn()
     {
         if (isWin)
         {
-            GameObject.Find("Panel_win").SetActive(true);
+            ShowVictory();
         } else if (players[count] == currentPlayer)
         {
-            endTurn = GameObject.Find("Panel_endTurn");
-            endTurn.gameObject.SetActive(false);
+            ClearCards();
+            SetUpCards();
+            ClearFeedback();
+        } else
+        {
+            HaltTask("EndTurn");
+        }
+    }
+
+    //clear the cards in the playarea
+    private void ClearCards()
+    {
+        foreach (GameObject card in activeCards)
+        {
+            Destroy(card);
+        }
+        activeCards.Clear();
+    }
+
+    //set up cards for the new round
+    private void SetUpCards()
+    {
+        List<Cards> init = currentPlayer.GetPlayerCards();
+        if (init.Count > 0)
+        {
+            foreach (Cards cards in init)
+            {
+                AddCardDataToGameObject(cards);
+            }
+        }
+    }
+
+    //add the given drawcard data to the gameobject card
+    private void AddCardDataToGameObject(Cards drawCard)
+    {
+        GameObject playerCard = Instantiate(card, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(playerCard, connectionToClient);
+        activeCards.Add(playerCard);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            playerCard.transform.SetParent(playerArea.transform, false);
+            playerCard.transform.GetChild(0).GetComponent<TMP_Text>().text = drawCard.GetCardType();
+            playerCard.transform.GetChild(1).GetComponent<TMP_Text>().text = drawCard.GetCardID().ToString();
         }
     }
 
@@ -143,6 +291,7 @@ public class PlayerManager : NetworkBehaviour
     [Command]
     public void CmdDrawCardData()
     {
+        ClearFeedback();
         if (cards == null || cards.Count == 0)
         {
             Debug.Log("No cards left");
@@ -154,8 +303,6 @@ public class PlayerManager : NetworkBehaviour
         currentPlayer.AddPlayerCards(drawCard);
         cards.Remove(drawCard);
 
-        Debug.Log("Got Card Data");
-
         //hud
         if (drawCard == null)
         {
@@ -163,32 +310,23 @@ public class PlayerManager : NetworkBehaviour
         }
         else
         {
-
-            GameObject playerCard = Instantiate(card, new Vector3(0, 0, 0), Quaternion.identity);
-            NetworkServer.Spawn(playerCard, connectionToClient);
-            activeCards.Add(playerCard);
-            drawCard.SetAttachment(playerCard);
-
-            Debug.Log("Got Card from prefab");
-
-            if (hasAuthority)
-            {
-                //set the canvas as the parent and the card will be a child for this element
-                playerCard.transform.SetParent(playerArea.transform, false);
-                playerCard.transform.GetChild(0).GetComponent<TMP_Text>().text = drawCard.GetCardType();
-                playerCard.transform.GetChild(2).GetComponent<TMP_Text>().text = drawCard.GetCardID().ToString();
-                Debug.Log("Add Card to the Player Area");
-            }
+            AddCardDataToGameObject(drawCard);
             HaltTask("PlayRounds");
         }
     }
 
+    private void ClearFeedback()
+    {
+        foreach (GameObject feedback in feedbacks) { Destroy(feedback); }
+        feedbacks.Clear();
+    }
+
     //check if the player collected enough element cards of the same kind
     [Command]
-    public bool CmdCollectElements(string cardID, string cardType)
+    public void CmdCollectElements(string cardType)
     {
-        Cards card = FindCard(cardID);
-
+        ClearFeedback();
+        collectAElement = true;
         //hud
         Cards[] playerCards = currentPlayer.GetPlayerCards().ToArray();
         int count = 0;
@@ -197,10 +335,10 @@ public class PlayerManager : NetworkBehaviour
         //count the number of cards of the same type are in the player's hand
         foreach (Cards cards in playerCards)
         {
-            if (card.GetCardType() == cardType)
+            if (cards.GetCardType() == cardType)
             {
                 count++;
-                checkCards.Add(card);
+                checkCards.Add(cards);
             }
         }
 
@@ -210,8 +348,7 @@ public class PlayerManager : NetworkBehaviour
             //remove gameobject of the card
             foreach (GameObject active in activeCards.ToArray())
             {
-                if (active.transform.GetChild(0).GetComponent<TMP_Text>().text == cardType
-                    && active.transform.GetChild(2).GetComponent<TMP_Text>().text != cardID)
+                if (active.transform.GetChild(0).GetComponent<TMP_Text>().text == cardType)
                 {
                     activeCards.Remove(active);
                     Destroy(active);
@@ -221,62 +358,97 @@ public class PlayerManager : NetworkBehaviour
             //remove card object in the player's hand
             foreach (Cards cards in checkCards)
             {
-                currentPlayer.RemovePlayerCards(card);
+                currentPlayer.RemovePlayerCards(cards);
             }
-
-            question = CmdCheckElements(cardType);
-            RpcElementCollected(cardType, question);
-            return true;
+            CmdCheckElements(cardType);
         }
         else
         {
-            bool collected = false;
-            foreach (Elements element in elements)
-            {
-                if (element.GetLabel() == cardType && element.IsCollected())
-                {
-                    collected = true;
-                    feedBack.text = "You have already collected " + cardType + " cards.";
-                }
-            }
-            if (!collected)
-            {
-                //the card is an element card but there aren't enough
-                feedBack.text = "You don't have enough " + cardType + " cards.";
-            }
-            return false;
+            collectAElement = false;
+            NotEnoughCards(cardType);
         }
+    }
+
+    //give the currentplayer feedback on whether the element has been collected or the player does not have enough cards
+    private void NotEnoughCards(string cardType)
+    {
+        string giveFeedback = "";
+        bool collected = false;
+        foreach (Elements element in elements)
+        {
+            if (element.GetLabel() == cardType && element.IsCollected())
+            {
+                collected = true;
+                giveFeedback = "You have already collected " + cardType + " cards.";
+            }
+        }
+        if (!collected)
+        {
+            //the card is an element card but there aren't enough
+            giveFeedback = "You don't have enough " + cardType + " cards.";
+        }
+        GiveFeedback(giveFeedback, "feedback");
+    }
+
+    //the function that shows the feedback
+    private void GiveFeedback(string giveFeedback, string type)
+    {
+        GameObject showFeedback = Instantiate(feedback, new Vector3(0, 0, 0), Quaternion.identity);
+        showFeedback.transform.GetChild(0).GetComponent<TMP_Text>().text = giveFeedback;
+        feedbacks.Add(showFeedback);
+        NetworkServer.Spawn(showFeedback, connectionToClient);
+
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            showFeedback.transform.SetParent(discardArea.transform, false);
+        }
+
+        if (type == "element question")
+        {
+            GameObject showButton = Instantiate(feedback2, new Vector3(0, 0, 0), Quaternion.identity);
+            feedbacks.Add(showButton);
+            NetworkServer.Spawn(showButton, connectionToClient);
+
+            if (hasAuthority)
+            {
+                //set the canvas as the parent and the card will be a child for this element
+                showButton.transform.SetParent(showFeedback.transform.GetChild(0).GetComponent<TMP_Text>().transform, false);
+            }
+        }
+
     }
 
     //Find card in the active cards
     private Cards FindCard(string cardID)
     {
-
-        Cards card = ScriptableObject.CreateInstance<Cards>();
+        Cards getCard = ScriptableObject.CreateInstance<Cards>();
         List<Cards> playercards = currentPlayer.GetPlayerCards();
         foreach (Cards findCard in playercards.ToArray())
         {
             if (findCard.GetCardID().ToString() == cardID)
             {
-                card = findCard;
-                currentPlayer.RemovePlayerCards(findCard);
+                getCard = findCard;
             }
         }
-        return card;
+        return getCard;
     }
 
+    //only check when an element is going to get collected
     [Command]
-    public string CmdCheckElements(string cardType)
+    public void CmdCheckElements(string cardType)
     {
         int collectAll = 5;
-        string question = "";
+        string getQuestion = "";
         foreach (Elements element in elements)
         {
             if (!element.IsCollected())
             {
                 if (element.GetLabel() == cardType)
                 {
-                    question = element.GetQuestion();
+                    //get question from the server and display it to all the players
+                    getQuestion = element.GetQuestion();
+                    RpcElementCollected(cardType, getQuestion);
                 }
                 else
                 {
@@ -289,16 +461,40 @@ public class PlayerManager : NetworkBehaviour
         {
             isWin = true;
         }
-        return question;
     }
 
-    [ClientRpc]
-    void RpcElementCollected(string cardType, string question)
+    //when all five elements are collected
+    void ShowVictory()
     {
-        //show image when it is collected
-        elementsDisplay.transform.Find(cardType).GetComponent<Image>().enabled = true;
-        feedBack.text = question;
+        GameObject victory = Instantiate(win, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(victory, connectionToClient);
 
-        //click Button to playround
+        if (hasAuthority)
+        {
+            //set the canvas as the parent and the card will be a child for this element
+            victory.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        }
+    }
+
+    //update elemtn image on all players
+    [ClientRpc]
+    void RpcElementCollected(string cardType, string getQuestion)
+    {
+        //show element image when it is collected
+        elementsDisplay = GameObject.Find("Elements");
+        elementsDisplay.transform.Find(cardType).GetComponent<Image>().enabled = true;
+        GiveFeedback(getQuestion, "element question");
+    }
+
+    //check if the element is collected
+    public bool CheckAElement()
+    {
+        return collectAElement;
+    }
+
+    //call the collectelements function
+    public void CollectElement(string cardType)
+    {
+        CmdCollectElements(cardType);
     }
 }

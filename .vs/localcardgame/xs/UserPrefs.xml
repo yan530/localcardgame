@@ -1,33 +1,18 @@
 ﻿<Properties StartupConfiguration="{E0404ABB-B95F-CC5E-2265-A594C4A8DC66}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DrapDrop.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StartGame.cs">
     <Files>
-      <File FileName="Assets/Scripts/HUDManager.cs" Line="180" Column="30" />
+      <File FileName="Assets/Scripts/HUDManager.cs" Line="75" Column="6" />
       <File FileName="Assets/Scripts/GameManager.cs" />
-      <File FileName="Assets/Scripts/PlayerManager.cs" Line="252" Column="42" />
-      <File FileName="Assets/Scripts/Players.cs" Line="45" Column="6" />
-      <File FileName="Assets/Scripts/DrawCard.cs" Line="15" Column="41" />
-      <File FileName="Assets/Scripts/JoinGame.cs" Line="15" Column="6" />
-      <File FileName="Assets/Scripts/DrapDrop.cs" Line="69" Column="46" />
+      <File FileName="Assets/Scripts/PlayerManager.cs" Line="21" Column="29" />
+      <File FileName="Assets/Scripts/Players.cs" />
+      <File FileName="Assets/Scripts/JoinGame.cs" Line="11" Column="34" />
+      <File FileName="Assets/Scripts/DrapDrop.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/StartGame.cs" Line="16" Column="6" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="localcardgame" expanded="True" selected="True" />
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="localcardgame" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="60debacd-a7ce-440e-816d-5150611dfc9f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f42972b0-dc3b-40fc-ad21-e6101e257ec7" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

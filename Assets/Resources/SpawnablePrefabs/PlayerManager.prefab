@@ -70,20 +70,27 @@ MonoBehaviour:
   currentPlayer: {fileID: 0}
   question: 
   isWin: 0
+  lobby: {fileID: 7695049197094634470, guid: 0c32a15b5aab2419cb9a73220035d091, type: 3}
   card: {fileID: 7696898817059404379, guid: 154e2cbedfc3c4faf9fc60265adc86a7, type: 3}
   playerArea: {fileID: 0}
   discardArea: {fileID: 0}
   gameBoard: {fileID: 3553608619213530830, guid: 4ab0db484e6674b409c4de1b474503c1,
     type: 3}
-  endTurn: {fileID: 0}
+  endTurn: {fileID: 3320245597445379870, guid: 0a54e51f1060f412bad6279b938b2f44, type: 3}
   activeCards: []
-  feedBack: {fileID: 0}
-  win: {fileID: 0}
-  sentence: []
-  textHeader: {fileID: 0}
-  textInstruction: {fileID: 0}
-  textInstruction2: {fileID: 0}
-  textInstruction3: {fileID: 0}
+  feedback: {fileID: 3746220337369704917, guid: 715a04f8031cb4ce8be41d2be20652fa,
+    type: 3}
+  feedback2: {fileID: 1230459744410323208, guid: 10e7477b812f74ee8a37b18eb0053da6,
+    type: 3}
+  feedbacks: []
+  win: {fileID: 5784717200582649823, guid: 6a3c8cda7ae524fd28b1f9da68d88fa9, type: 3}
+  elementsDisplay: {fileID: 0}
+  communicationDisplay: {fileID: 0}
+  collectAElement: 0
+  playerInfo: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
   count: 0
   playerName: 
 --- !u!114 &-7987675688179825676

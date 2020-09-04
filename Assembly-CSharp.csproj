@@ -71,11 +71,12 @@
     <Compile Include="Assets\Scripts\Elements.cs" />
     <Compile Include="Assets\Scripts\ExchangeCard.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GrantAuthority.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\NewRound.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Players.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />

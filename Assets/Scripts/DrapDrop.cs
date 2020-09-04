@@ -7,12 +7,21 @@ using Mirror;
 
 public class DrapDrop : NetworkBehaviour
 {
+    public GameObject DiscardZone;
+    //public GameObject GiveZone;
+
     private bool isDragging = false;
     private bool isOverDiscardZone = false;
     private bool isOverGiveZone = false;
-    private GameObject dropZone = null;
+    private GameObject dropZone;
     private Vector2 startPosition;
     public PlayerManager playerManager;
+
+    private void Start()
+    {
+        DiscardZone = GameObject.Find("DropZone");
+        //GiveZone = GameObject.Find("Panel_player2");
+    }
 
 
     // Update is called once per frame
@@ -47,21 +56,17 @@ public class DrapDrop : NetworkBehaviour
 
     public void EndDrag()
     {
-        NetworkIdentity netID = NetworkClient.connection.identity;
-        playerManager = netID.GetComponent<PlayerManager>();
         isDragging = false;
 
         if (isOverDiscardZone)
         {
-            bool checkCard = playerManager.CmdCollectElements(transform.GetChild(2).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text);
-
+            NetworkIdentity netID = NetworkClient.connection.identity;
+            playerManager = netID.GetComponent<PlayerManager>();
+            playerManager.CollectElement(transform.GetChild(0).GetComponent<TMP_Text>().text);
             //if the player doesn't have enough element cards, this card will be returned to the player's hand
-            if (!checkCard)
+            if (!playerManager.CheckAElement())
             {
                 transform.position = startPosition;
-            } else
-            {
-                transform.SetParent(dropZone.transform, false);
             }
 
         } else if (isOverGiveZone)
