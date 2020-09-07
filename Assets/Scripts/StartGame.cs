@@ -12,6 +12,6 @@ public class StartGame : NetworkBehaviour
         NetworkIdentity netID = NetworkClient.connection.identity;
         playerManager = netID.GetComponent<PlayerManager>();
         //need to fix user login
-        playerManager.LoadScene();
+        //playerManager.LoadScene();
     }
 }
