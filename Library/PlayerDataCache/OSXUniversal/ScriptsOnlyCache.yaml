@@ -25,18 +25,10 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.CanvasScalerEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -78,61 +70,61 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 14430}
+      Script: {instanceID: 11744}
     - Class: 114
-      Script: {instanceID: 14432}
+      Script: {instanceID: 11746}
     - Class: 114
-      Script: {instanceID: 14712}
+      Script: {instanceID: 11768}
     - Class: 114
-      Script: {instanceID: 14742}
+      Script: {instanceID: 11772}
     - Class: 114
-      Script: {instanceID: 14784}
+      Script: {instanceID: 12054}
     - Class: 114
-      Script: {instanceID: 14976}
+      Script: {instanceID: 12084}
     - Class: 114
-      Script: {instanceID: 15060}
+      Script: {instanceID: 12320}
     - Class: 114
-      Script: {instanceID: 15146}
+      Script: {instanceID: 12406}
     - Class: 114
-      Script: {instanceID: 15186}
+      Script: {instanceID: 12492}
     - Class: 114
-      Script: {instanceID: 15214}
+      Script: {instanceID: 12532}
     - Class: 114
-      Script: {instanceID: 15246}
+      Script: {instanceID: 12560}
     - Class: 114
-      Script: {instanceID: 15326}
+      Script: {instanceID: 12592}
     - Class: 114
-      Script: {instanceID: 15720}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 15780}
+      Script: {instanceID: 13130}
     - Class: 114
-      Script: {instanceID: 15826}
+      Script: {instanceID: 13176}
     - Class: 114
-      Script: {instanceID: 15868}
+      Script: {instanceID: 13218}
     - Class: 114
-      Script: {instanceID: 15966}
+      Script: {instanceID: 13316}
     - Class: 114
-      Script: {instanceID: 15990}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 16018}
+      Script: {instanceID: 13376}
     - Class: 114
-      Script: {instanceID: 16034}
+      Script: {instanceID: 13394}
     - Class: 114
-      Script: {instanceID: 16272}
+      Script: {instanceID: 13634}
     - Class: 114
-      Script: {instanceID: 16348}
+      Script: {instanceID: 13712}
     - Class: 114
-      Script: {instanceID: 16400}
+      Script: {instanceID: 13766}
     - Class: 114
-      Script: {instanceID: 16464}
+      Script: {instanceID: 13830}
     - Class: 114
-      Script: {instanceID: 16560}
+      Script: {instanceID: 13928}
     - Class: 114
-      Script: {instanceID: 16600}
+      Script: {instanceID: 13970}
     - Class: 114
-      Script: {instanceID: 16760}
+      Script: {instanceID: 14130}
     - Class: 114
-      Script: {instanceID: 16820}
+      Script: {instanceID: 14192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -150,6 +142,18 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: f087c23fbfa15475a0d110af46fb0496
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 7ab0e790220bdca831fdd886b339039d
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GridLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 016664814c823cfc5ac199e835dc335b
@@ -306,12 +310,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 7ab0e790220bdca831fdd886b339039d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GridLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: fcb8bbe6b26bfa146518ee357c62a1e9
@@ -576,12 +574,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
-  - hash:
-      serializedVersion: 2
-      Hash: f087c23fbfa15475a0d110af46fb0496
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: 4c790fa3b7c93033baa4406ca5ac8c04

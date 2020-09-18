@@ -198,8 +198,6 @@ public class NetworkManagerLobby : NetworkManager
         //    index++;
         //    playerNum++;
         //}
-        playerArea = GameObject.Find("Panel_player1");
-        discardArea = GameObject.Find("Panel_discard");
     }
 
     //start new round, check who the player is
@@ -265,6 +263,7 @@ public class NetworkManagerLobby : NetworkManager
         GameObject playerCard = Instantiate(card, new Vector3(0, 0, 0), Quaternion.identity);
         NetworkServer.Spawn(playerCard);
         currentPlayer.activeCards.Add(playerCard);
+        playerArea = GameObject.Find("Panel_player1");
         //set the canvas as the parent and the card will be a child for this element
         playerCard.transform.SetParent(playerArea.transform, false);
         playerCard.transform.GetChild(0).GetComponent<TMP_Text>().text = drawCard.GetCardType();
@@ -303,6 +302,7 @@ public class NetworkManagerLobby : NetworkManager
         showFeedback.transform.GetChild(0).GetComponent<TMP_Text>().text = giveFeedback;
         feedbacks.Add(showFeedback);
         NetworkServer.Spawn(showFeedback);
+        discardArea = GameObject.Find("Panel_discard");
         //set the canvas as the parent and the card will be a child for this element
         showFeedback.transform.SetParent(discardArea.transform, false);
 
