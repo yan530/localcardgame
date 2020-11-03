@@ -4,7 +4,6 @@ ScriptsOnlyBuild:
     - DebugLog
     - DrapDrop
     - DrawCard
-    - JoinGame
     - JoinLobbyMenu
     - MainMenu
     - NetworkManagerLobby
@@ -38,8 +37,66 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.RectMask2D
   sceneClasses:
+    Assets/Scenes/Scene_Game.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11742}
+    - Class: 114
+      Script: {instanceID: 11744}
+    - Class: 114
+      Script: {instanceID: 11772}
+    - Class: 114
+      Script: {instanceID: 12058}
+    - Class: 114
+      Script: {instanceID: 12568}
+    - Class: 114
+      Script: {instanceID: 13396}
+    - Class: 114
+      Script: {instanceID: 13654}
+    - Class: 114
+      Script: {instanceID: 13732}
+    - Class: 114
+      Script: {instanceID: 13786}
+    - Class: 114
+      Script: {instanceID: 14214}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/Scene_Login.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -70,61 +127,61 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11744}
+      Script: {instanceID: 11742}
     - Class: 114
-      Script: {instanceID: 11746}
+      Script: {instanceID: 11744}
     - Class: 114
       Script: {instanceID: 11768}
     - Class: 114
       Script: {instanceID: 11772}
     - Class: 114
-      Script: {instanceID: 12054}
+      Script: {instanceID: 12058}
     - Class: 114
-      Script: {instanceID: 12084}
+      Script: {instanceID: 12088}
     - Class: 114
-      Script: {instanceID: 12320}
+      Script: {instanceID: 12218}
     - Class: 114
-      Script: {instanceID: 12406}
+      Script: {instanceID: 12326}
     - Class: 114
-      Script: {instanceID: 12492}
+      Script: {instanceID: 12412}
     - Class: 114
-      Script: {instanceID: 12532}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12560}
+      Script: {instanceID: 12568}
     - Class: 114
-      Script: {instanceID: 12592}
+      Script: {instanceID: 12602}
     - Class: 114
-      Script: {instanceID: 12676}
+      Script: {instanceID: 12686}
     - Class: 114
-      Script: {instanceID: 13130}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 13176}
+      Script: {instanceID: 13194}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 13236}
     - Class: 114
-      Script: {instanceID: 13316}
+      Script: {instanceID: 13336}
     - Class: 114
-      Script: {instanceID: 13348}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 13376}
+      Script: {instanceID: 13396}
     - Class: 114
-      Script: {instanceID: 13394}
+      Script: {instanceID: 13414}
     - Class: 114
-      Script: {instanceID: 13634}
+      Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13732}
     - Class: 114
-      Script: {instanceID: 13766}
+      Script: {instanceID: 13786}
     - Class: 114
-      Script: {instanceID: 13830}
+      Script: {instanceID: 13854}
     - Class: 114
-      Script: {instanceID: 13928}
+      Script: {instanceID: 13952}
     - Class: 114
-      Script: {instanceID: 13970}
+      Script: {instanceID: 13994}
     - Class: 114
-      Script: {instanceID: 14130}
+      Script: {instanceID: 14152}
     - Class: 114
-      Script: {instanceID: 14192}
+      Script: {instanceID: 14214}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -516,7 +573,7 @@ ScriptsOnlyBuild:
     className: Tank
   - hash:
       serializedVersion: 2
-      Hash: 31ddefec7a9b3bb3e52c24f0ebaadbf0
+      Hash: 3c1e135f88064dded8b09cbeddb64e77
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerManager
@@ -810,7 +867,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
+      Hash: 8e6ceabfd38a184413d69b7db56c89cc
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
@@ -978,7 +1035,7 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: c60c5cba0d5ed4f4a018240d6339217f
+      Hash: f1d735cc1a21c3704ab52568f4fbfcf8
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner
     className: PlaymodeTestsController
@@ -1057,4 +1114,5 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/Scene_Login.unity
-  playerPath: /Users/anni/Desktop/localcardgame.app
+  - Assets/Scenes/Scene_Game.unity
+  playerPath: /Users/anni/Desktop/Test.app

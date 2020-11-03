@@ -10,8 +10,9 @@ public class PlayerManager : NetworkBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject lobbyUI = null;
+    [SerializeField] private GameObject lower = null;
+    [SerializeField] private TMP_Text feedback = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[4];
-    [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[4];
     [SerializeField] private Button startGameButton = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
@@ -34,13 +35,6 @@ public class PlayerManager : NetworkBehaviour
     public List<Cards> activeCardsData = new List<Cards>();
     public bool collectAElement;
 
-    //instruction
-    //public string[] sentence;
-    //public TMP_Text textHeader;
-    //public TMP_Text textInstruction;
-    //public TMP_Text textInstruction2;
-    //public TMP_Text textInstruction3;
-
     //debug
     private int playerNum;
 
@@ -59,6 +53,11 @@ public class PlayerManager : NetworkBehaviour
         }
     }
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public override void OnStartAuthority()
     {
         CmdSetDisplayName(PlayerNameInput.DisplayName);
@@ -71,6 +70,9 @@ public class PlayerManager : NetworkBehaviour
         Room.playerManagers.Add(this);
 
         UpdateDisplay();
+
+        IsReady = true;
+        Room.NotifyPlayersOfReadyState();
     }
 
     public override void OnStopClient()
@@ -85,6 +87,9 @@ public class PlayerManager : NetworkBehaviour
 
     private void UpdateDisplay()
     {
+        //turn something off/change the text on the canvas lobby
+        //are the canvas lobby the same or different 
+
         if (!hasAuthority)
         {
             foreach (var playerManager in Room.playerManagers)
@@ -102,15 +107,15 @@ public class PlayerManager : NetworkBehaviour
         for (int i = 0; i < playerNameTexts.Length; i++)
         {
             playerNameTexts[i].text = "Waiting For Player...";
-            playerReadyTexts[i].text = string.Empty;
+            //playerReadyTexts[i].text = string.Empty;
         }
 
         for (int i = 0; i < Room.playerManagers.Count; i++)
         {
             playerNameTexts[i].text = Room.playerManagers[i].DisplayName;
-            playerReadyTexts[i].text = Room.playerManagers[i].IsReady ?
-                "<color=green>Ready</color>" :
-                "<color=red>Not Ready</color>";
+            //playerReadyTexts[i].text = Room.playerManagers[i].IsReady ?
+            //    "<color=green>Ready</color>" :
+            //    "<color=red>Not Ready</color>";
         }
     }
 
@@ -127,43 +132,50 @@ public class PlayerManager : NetworkBehaviour
         DisplayName = displayName;
     }
 
-    [Command]
-    public void CmdReadyUp()
-    {
-        IsReady = !IsReady;
+    //[Command]
+    //public void CmdReadyUp()
+    //{
+    //    IsReady = !IsReady;
 
-        Room.NotifyPlayersOfReadyState();
-    }
+    //    Room.NotifyPlayersOfReadyState();
+    //}
 
     [Command]
     public void CmdStartGame()
     {
         if (Room.playerManagers[0].connectionToClient != connectionToClient) { return; }
+
+        //show canvas
+        GameObject gb = Instantiate(Room.gameBoard, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(gb);
+
+        //set the canvas as the parent and the card will be a child for this element
+        gb.transform.SetParent(lobbyUI.transform, false);
+
         Room.StartGame();
     }
 
-    //display player
-    private void DisplayPlayer(int i, string name)
+    public void ShowGameboard()
     {
-        //change player name on UI
-    }
 
+    }
 
     public void HaltTask(string name)
     {
         Invoke(name, 0.3f);
     }
 
+    //sort cards and clear feedbacks
     public void StartTurn()
     {
-        Room.ClearFeedback();
+        ClearCards();
+        SetUpCards();
     }
 
     //get a card data from the cards list
     [Command]
     public void CmdDrawCardData()
     {
-        Room.ClearFeedback();
         if (Room.cards == null || Room.cards.Count == 0)
         {
             Debug.Log("No cards left");
@@ -183,9 +195,53 @@ public class PlayerManager : NetworkBehaviour
         }
         else
         {
-            Room.AddCardDataToGameObject(drawCard);
-            Room.HaltTask("PlayRounds");
+            AddCardDataToGameObject(drawCard);
             Room.EndTurn();
+        }
+    }
+
+    //clear the cards in the playarea
+    public void ClearCards()
+    {
+        foreach (GameObject card in activeCards)
+        {
+            Destroy(card);
+        }
+        activeCards.Clear();
+    }
+
+    //set up cards for the new round
+    public void SetUpCards()
+    {
+        List<Cards> init = activeCardsData;
+        if (init.Count > 0)
+        {
+            foreach (Cards cards in init)
+            {
+                AddCardDataToGameObject(cards);
+            }
+        }
+    }
+
+    //add the given drawcard data to the gameobject card
+    public void AddCardDataToGameObject(Cards drawCard)
+    {
+        GameObject playerCard = Instantiate(Room.card, new Vector3(0, 0, 0), Quaternion.identity);
+        NetworkServer.Spawn(playerCard);
+        activeCards.Add(playerCard);
+        //set the canvas as the parent and the card will be a child for this element
+        playerCard.transform.SetParent(lower.transform, false);
+        playerCard.transform.GetChild(0).GetComponent<TMP_Text>().text = drawCard.GetCardType();
+        playerCard.transform.GetChild(1).GetComponent<TMP_Text>().text = drawCard.GetCardID().ToString();
+    }
+
+    //the function that shows the feedback
+    public void GiveFeedback(string giveFeedback, string type)
+    {
+        feedback.text = giveFeedback;
+        if (type == "element question")
+        {
+            //display a panel
         }
     }
 
@@ -193,7 +249,6 @@ public class PlayerManager : NetworkBehaviour
     [Command]
     public void CmdCollectElements(string cardType)
     {
-        Room.ClearFeedback();
         collectAElement = true;
         //hud
         Cards[] playerCards = activeCardsData.ToArray();
@@ -256,7 +311,7 @@ public class PlayerManager : NetworkBehaviour
             //the card is an element card but there aren't enough
             giveFeedback = "You don't have enough " + cardType + " cards.";
         }
-        Room.GiveFeedback(giveFeedback, "feedback");
+        GiveFeedback(giveFeedback, "feedback");
     }
 
     //Find card in the active cards

@@ -112,7 +112,7 @@ public class NetworkManagerLobby : NetworkManager
 
     public void NotifyPlayersOfReadyState()
     {
-        foreach (var playerManager in playerManagers)
+        foreach (PlayerManager playerManager in playerManagers)
         {
             playerManager.HandleReadyToStart(IsReadyToStart());
         }
@@ -120,21 +120,15 @@ public class NetworkManagerLobby : NetworkManager
 
     private bool IsReadyToStart()
     {
-        if (numPlayers < minPlayers) { return false; }
+        Debug.Log(numPlayers);
+        if (numPlayers == 0) { return false; }
 
-        foreach (var playerManager in playerManagers)
-        {
-            if (!playerManager.IsReady) { return false; }
-        }
+        //foreach (var playerManager in playerManagers)
+        //{
+        //    if (!playerManager.IsReady) { return false; }
+        //}
 
         return true;
-    }
-
-    public void StartGame()
-    {
-        if (!IsReadyToStart()) { return ; }
-        LoadCards();
-        UpdateScene();
     }
 
     public override void OnServerReady(NetworkConnection conn)
@@ -173,35 +167,15 @@ public class NetworkManagerLobby : NetworkManager
         }
     }
 
-    private void UpdateScene()
+    public void StartGame()
     {
-        LoadScene();
+        if (!IsReadyToStart()) { return; }
+        LoadCards();
         PlayRounds();
     }
 
-    public void LoadScene()
-    {
-        //generate the gameboard from prefab
-        GameObject newGameBoard = Instantiate(gameBoard, new Vector3(0, 0, 0), Quaternion.identity);
-        NetworkServer.Spawn(newGameBoard);
-        //set the canvas as the parent and the card will be a child for this element
-        //newGameBoard.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        //get each player area set up
-        //int index = 0;
-        //while (index < Room.players.Count)
-        //{
-        //    if (playerNum >= Room.players.Count)
-        //    {
-        //        playerNum = 0;
-        //    }
-        //    DisplayPlayer(index, Room.players[playerNum].GetPlayerName());
-        //    index++;
-        //    playerNum++;
-        //}
-    }
-
     //start new round, check who the player is
-    private void PlayRounds()
+    public void PlayRounds()
     {
         if (count > playerManagers.Count - 1)
         {
@@ -225,103 +199,27 @@ public class NetworkManagerLobby : NetworkManager
         else
         {
             currentPlayer = playerManagers[count];
-            ClearCards();
-            SetUpCards();
-            ClearFeedback();
-            EndTurn();
+            Debug.Log("the current player number is:" + count);
             currentPlayer.StartTurn();
         }
         count++;
     }
 
-    //clear the cards in the playarea
-    public void ClearCards()
-    {
-        foreach (GameObject card in currentPlayer.activeCards)
-        {
-            Destroy(card);
-        }
-        currentPlayer.activeCards.Clear();
-    }
-
-    //set up cards for the new round
-    public void SetUpCards()
-    {
-        List<Cards> init = currentPlayer.activeCardsData;
-        if (init.Count > 0)
-        {
-            foreach (Cards cards in init)
-            {
-                AddCardDataToGameObject(cards);
-            }
-        }
-    }
-
-    //add the given drawcard data to the gameobject card
-    public void AddCardDataToGameObject(Cards drawCard)
-    {
-        GameObject playerCard = Instantiate(card, new Vector3(0, 0, 0), Quaternion.identity);
-        NetworkServer.Spawn(playerCard);
-        currentPlayer.activeCards.Add(playerCard);
-        playerArea = GameObject.Find("Panel_player1");
-        //set the canvas as the parent and the card will be a child for this element
-        playerCard.transform.SetParent(playerArea.transform, false);
-        playerCard.transform.GetChild(0).GetComponent<TMP_Text>().text = drawCard.GetCardType();
-        playerCard.transform.GetChild(1).GetComponent<TMP_Text>().text = drawCard.GetCardID().ToString();
-    }
-
-    //create a panel over the player's play area when it's not the player's turn
     public void EndTurn()
     {
-        GameObject createEndTurn = Instantiate(endTurn, new Vector3(0, 0, 0), Quaternion.identity);
-        feedbacks.Add(createEndTurn);
-        NetworkServer.Spawn(createEndTurn);
-        //set the canvas as the parent and the card will be a child for this element
-        createEndTurn.transform.SetParent(GameObject.Find("Canvas_Game(Clone)").transform, false);
+        PlayRounds();
     }
 
     //when all five elements are collected
     private void ShowVictory()
     {
-        GameObject victory = Instantiate(win, new Vector3(0, 0, 0), Quaternion.identity);
-        NetworkServer.Spawn(victory);
-        //set the canvas as the parent and the card will be a child for this element
-        victory.transform.SetParent(GameObject.Find("Canvas_Game(Clone)").transform, false);
-    }
-
-    public void ClearFeedback()
-    {
-        foreach (GameObject feedback in feedbacks) { Destroy(feedback); }
-        feedbacks.Clear();
-    }
-
-    //the function that shows the feedback
-    public void GiveFeedback(string giveFeedback, string type)
-    {
-        GameObject showFeedback = Instantiate(feedback, new Vector3(0, 0, 0), Quaternion.identity);
-        showFeedback.transform.GetChild(0).GetComponent<TMP_Text>().text = giveFeedback;
-        feedbacks.Add(showFeedback);
-        NetworkServer.Spawn(showFeedback);
-        discardArea = GameObject.Find("Panel_discard");
-        //set the canvas as the parent and the card will be a child for this element
-        showFeedback.transform.SetParent(discardArea.transform, false);
-
-        if (type == "element question")
-        {
-            GameObject showButton = Instantiate(feedback2, new Vector3(0, 0, 0), Quaternion.identity);
-            feedbacks.Add(showButton);
-            NetworkServer.Spawn(showButton);
-            //set the canvas as the parent and the card will be a child for this element
-            showButton.transform.SetParent(showFeedback.transform.GetChild(0).GetComponent<TMP_Text>().transform, false);
-        }
+        //show victory in all players
     }
 
     //update elemtn image on all players
     public void ElementCollected(string cardType, string getQuestion)
     {
-        //show element image when it is collected
-        elementsDisplay = GameObject.Find("Elements");
-        elementsDisplay.transform.Find(cardType).GetComponent<Image>().enabled = true;
-        GiveFeedback(getQuestion, "element question");
+        //update element image in all players when it is collected
+     
     }
 }

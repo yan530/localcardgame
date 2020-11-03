@@ -19,8 +19,7 @@ public class DrapDrop : NetworkBehaviour
 
     private void Start()
     {
-        DiscardZone = GameObject.Find("DropZone");
-        //GiveZone = GameObject.Find("Panel_player2");
+        DiscardZone = GameObject.Find("Panel_upper");
     }
 
 
@@ -60,6 +59,7 @@ public class DrapDrop : NetworkBehaviour
 
         if (isOverDiscardZone)
         {
+            Debug.Log("over drop zone");
             NetworkIdentity netID = NetworkClient.connection.identity;
             playerManager = netID.GetComponent<PlayerManager>();
             playerManager.CollectElement(transform.GetChild(0).GetComponent<TMP_Text>().text);
