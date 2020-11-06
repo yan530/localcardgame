@@ -10,7 +10,6 @@ public enum GameState { START, PLAYERTURN, ENDTURN, WON }
 public class GameManager : MonoBehaviour
 {
     //set to private later
-    public Cards topOfTheDeck;
     public List<Players> players;
     public List<Cards> cards;
     public List<Elements> elements;
@@ -19,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameState state;
     public string question;
     public bool isWin;
+    public bool newRound;
+    public bool outOfCards;
 
     //debug
     public int index;
@@ -34,9 +35,9 @@ public class GameManager : MonoBehaviour
         elements = new List<Elements>();
         state = GameState.START;
         index = 0;
-        topOfTheDeck = null;
         question = "";
         isWin = false;
+        newRound = true;outOfCards = false;
     }
 
     //start the game, load new scene, and add players to the list
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         AddData("Card_data", "cards");
         AddData("Element_data", "elements");
+        AddData("Culture_data", "culture");
     }
 
     //load data and concatinate it into appropriate form
@@ -73,44 +75,14 @@ public class GameManager : MonoBehaviour
             {
                 elements.Add(Elements.CreateInstance(i, row[1], row[2], false));
             }
-            else
+            else if (type == "cards")
             {
                 cards.Add(Cards.CreateInstance(i, row[1], row[2], row[3]));
+            } else
+            {
+                cultures.Add(Cards.CreateInstance(i, row[2], row[1], row[3]));
             }
         }
-    }
-
-    //turn based method
-    public void PlayRounds()
-    {
-        state = GameState.PLAYERTURN;
-        currentPlayer = players[index];
-        playerName = currentPlayer.GetPlayerName();
-        question = "";
-    }
-
-    //get a card data from the cards list
-    public Cards DrawCardData()
-    {
-        if (cards == null || cards.Count == 0)
-        {
-            return null;
-        }
-        currentPlayer.DecreaseActions();
-
-        //check if an card has been exchanged and moved to the top of the deck
-        Cards drawCard;
-        if (topOfTheDeck == null)
-        {
-            drawCard = cards[UnityEngine.Random.Range(0, cards.Count - 1)];
-        } else
-        {
-            drawCard = topOfTheDeck;
-            topOfTheDeck = null;
-        }
-        currentPlayer.AddPlayerCards(drawCard);
-        cards.Remove(drawCard);
-        return drawCard;
     }
 
     //move to the next player in the list
@@ -119,51 +91,86 @@ public class GameManager : MonoBehaviour
         state = GameState.ENDTURN;
         if (index < players.Count - 1)
         {
+            newRound = false;
             index++;
         }
         else
         {
             index = 0;
+            newRound = true;
         }
         currentPlayer.ResetActions();
     }
 
-    public void PlayCard(string cardID, string type)
+    //turn based method
+    public void PlayRounds()
+    {
+        state = GameState.PLAYERTURN;
+        currentPlayer = players[index];
+        question = "";
+    }
+
+    public Cards GetNewCulture()
+    {
+        Cards drawCulture = cultures[UnityEngine.Random.Range(0, cultures.Count - 1)];
+        return drawCulture;
+    }
+
+    //get a card data from the cards list
+    public Cards DrawCardData()
+    {
+        if (cards == null || cards.Count == 0)
+        {
+            outOfCards = true;
+            return null;
+        }
+        else
+        {
+            currentPlayer.DecreaseActions();
+
+            //check if an card has been exchanged and moved to the top of the deck
+            Cards drawCard = cards[UnityEngine.Random.Range(0, cards.Count - 1)];
+            currentPlayer.AddPlayerCards(drawCard);
+            cards.Remove(drawCard);
+            return drawCard;
+        }
+    }
+
+    public void GiveCard(string cardID, string cardType, int num)
     {
         currentPlayer.DecreaseActions();
-        Cards card = FindCard(cardID);
-        if (type == "Culture")
+        foreach (Cards card in currentPlayer.GetPlayerCards().ToArray())
         {
-            if (cultures.Count >= 6)
+            if ((card.GetCardID() + "") == cardID)
             {
-                cultures.RemoveAt(0);
+                currentPlayer.RemovePlayerCards(card);
+                players[num].AddPlayerCards(card);
             }
-            cultures.Add(card);
-        } else if (type == "Traveler")
-        {
-            //implementation needed
-            currentPlayer.RemovePlayerCards(card);
-        } else
-        {
-            int collectAll = 5;
-            foreach (Elements element in elements)
-            {
-                if (!element.IsCollected())
-                {
-                    if (element.GetLabel() == type)
-                    {
-                        question = element.GetQuestion();
-                    } else
-                    {
-                        collectAll--;
-                    }
+        }
+    }
 
-                }
-            }
-            if (collectAll == 5)
+    public void PlayCard(string type)
+    {
+        currentPlayer.DecreaseActions();
+        Debug.Log(currentPlayer.GetActions());
+        int collectAll = 5;
+        foreach (Elements element in elements)
+        {
+            if (!element.IsCollected())
             {
-                isWin = true;
+                if (element.GetLabel() == type)
+                {
+                    question = element.GetQuestion();
+                } else
+                {
+                    collectAll--;
+                }
+
             }
+        }
+        if (collectAll == 5)
+        {
+            isWin = true;
         }
     }
 

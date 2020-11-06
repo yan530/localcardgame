@@ -13,7 +13,7 @@ public class Players : ScriptableObject
     {
         playerName = inputName;
         playerCards = new List<Cards>();
-        actions = 4;
+        actions = 1;
     }
 
     public static new Players CreateInstance(string inputName)
@@ -51,7 +51,7 @@ public class Players : ScriptableObject
 
     public void ResetActions()
     {
-        actions = 4;
+        actions = 1;
     }
 
     public int GetActions()

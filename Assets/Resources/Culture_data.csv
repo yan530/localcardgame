@@ -1,0 +1,11 @@
+cardID,label,type,description
+1,Communication,Verbal,People say 3 word per sentence.
+2,Communication,Verbal,"People talk with sentence structure: ""Object - Subject - Verb""(e.g. Card, I want)."
+3,Communication,Verbal,"People cannot use the word ""language, norm, value, symbol or ritual"""
+4,Communication,Verbal,"People say “yes/no, ma'am/sir” instead of yes/no."
+5,Communication,Verbal,People ask each other “how are you” everytime they speak.
+6,Communication,Verbal,People keep the camera off for this round.
+7,Communication,Chat,People type in pig latin. (e.g. langauge -> anguagelay)
+8,Communication,Chat,People can only type with emojis.
+9,Communication,Chat,People only send direct messages.
+10,Communication,Verbal,People applaud when someone finishes speaking.

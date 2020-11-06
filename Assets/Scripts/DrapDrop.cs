@@ -11,7 +11,7 @@ public class DrapDrop : MonoBehaviour
     private GameObject dropZone = null;
     private Vector2 startPosition;
     private HUDManager hudManager;
-    public Button Exchange;
+    private string dropzoneName;
 
     void Start()
     {
@@ -32,6 +32,8 @@ public class DrapDrop : MonoBehaviour
     {
         isOverDropZone = true;
         dropZone = collision.gameObject;
+        dropzoneName = dropZone.name;
+        Debug.Log(dropzoneName);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -42,7 +44,6 @@ public class DrapDrop : MonoBehaviour
 
     public void StartDrag()
     {
-        Exchange.gameObject.SetActive(false);
         if (!isOverDropZone)
         {
             startPosition = transform.position;
@@ -56,23 +57,45 @@ public class DrapDrop : MonoBehaviour
 
         if (isOverDropZone)
         {
-            bool checkCard = hudManager.PlayCardCheck(transform.GetChild(2).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text);
+            if (dropzoneName == "Panel_islandarea")
+            {
 
-            //if the player doesn't have enough element cards, this card will be returned to the player's hand
-            if (!checkCard)
+                bool checkCard = hudManager.PlayCardCheck(transform.GetChild(1).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text);
+
+                //if the player doesn't have enough element cards, this card will be returned to the player's hand
+                if (!checkCard)
+                {
+                    transform.position = startPosition;
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
+            } else if (dropzoneName == "Player2")
+            {
+                hudManager.GiveCard(transform.GetChild(1).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text, 1);
+                Destroy(this.gameObject);
+
+            }
+            //else if (dropzoneName == "Player3")
+            //{
+            //    hudManager.GiveCard(transform.GetChild(1).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text, 2);
+            //    Destroy(this.gameObject);
+
+            //}
+            else if (dropzoneName == "Player4")
+            {
+                hudManager.GiveCard(transform.GetChild(1).GetComponent<TMP_Text>().text, transform.GetChild(0).GetComponent<TMP_Text>().text, 3);
+                Destroy(this.gameObject);
+            }
+            else
             {
                 transform.position = startPosition;
-                Exchange.gameObject.SetActive(true);
-            } else
-            {
-                transform.SetParent(dropZone.transform, false);
-                Exchange.gameObject.SetActive(false);
             }
 
         } else
         {
             transform.position = startPosition;
-            Exchange.gameObject.SetActive(true);
         }
     }
 }

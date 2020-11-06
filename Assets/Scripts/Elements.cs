@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Elements : ScriptableObject
 {
@@ -8,6 +9,7 @@ public class Elements : ScriptableObject
     private string question;
     private string label;
     private int ElementID;
+    private Image image;
 
     public void Init(int id, string label, string question, bool collected)
     {
@@ -15,6 +17,10 @@ public class Elements : ScriptableObject
         this.label = label;
         this.question = question;
         this.collected = collected;
+        if (image != null)
+        {
+            image.sprite = Resources.Load<Sprite>("Image/" + label);
+        }
     }
 
     public static Elements CreateInstance(int id, string label, string question, bool collected)
@@ -38,5 +44,10 @@ public class Elements : ScriptableObject
     public bool IsCollected()
     {
         return collected;
+    }
+
+    public Image GetImage()
+    {
+        return image;
     }
 }
