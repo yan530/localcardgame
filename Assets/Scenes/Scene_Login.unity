@@ -214,7 +214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0009765625, y: 0.011230469}
+  m_AnchoredPosition: {x: 0, y: 0.01171875}
   m_SizeDelta: {x: 0.0014648438, y: -0.022705078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &211683748
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8301361611544023251, guid: a35de229d811c4702b231ec271d26dbe,
+  playerPrefab: {fileID: 1205936888907298007, guid: acf536f99bcd94e4e845062ece821fda,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
@@ -2247,7 +2247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0029296875, y: 0.0068359375}
+  m_AnchoredPosition: {x: -0.00390625, y: 0.0068359375}
   m_SizeDelta: {x: -0.0056152344, y: -0.013671875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610701879

@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{E0404ABB-B95F-CC5E-2265-A594C4A8DC66}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NetworkManagerLobby.cs">
     <Files>
-      <File FileName="Assets/Scripts/NetworkManagerLobby.cs" Line="125" Column="28" />
-      <File FileName="Assets/Scripts/PlayerManager.cs" Line="131" Column="55" />
-      <File FileName="Assets/Scripts/DrapDrop.cs" Line="66" Column="28" />
+      <File FileName="Assets/Scripts/NetworkManagerLobby.cs" Line="85" Column="49" />
+      <File FileName="Assets/Scripts/PlayerManager.cs" Line="131" Column="6" />
+      <File FileName="Assets/Scripts/DrapDrop.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="196ef7f7-0952-4772-b746-8570b32f7eb1" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d9838d8d-1f52-44ea-9e03-d2be1d227a4a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
